@@ -44,30 +44,32 @@ but it contains multiple syntax errors that prevent it from being parsed.
 // 🔍 Provided JSON File with Errors
 // ============================================
 
-const invalidBookingJSON = `
+//should start with a 'string', 'number', 'null', 'boolean', '{', '['.
+//removed variable name and template literal
+
 {
   "hotelName": "Grand City Hotel",
-  "checkInDate": "2024-05-15"
+  "checkInDate": "2024-05-15", //missing comma, should be a comma after each key/value pair
   "checkOutDate": "2024-05-20",
   "guests": [
     {
-      name: "Alice Johnson",
+      "name": "Alice Johnson", //missing quotes around "name", key/value pairs should have double quotes if they are a string
       "age": 30,
       "email": "alice.johnson@example.com"
     },
     {
       "name": "Bob Smith",
-      "age": undefined,
+      "age": null,  //should be a 'string', 'number', 'null', 'boolean', '{', '['. //changed 'undefined' to 'null'
       "email": "bob.smith@example"
     }
   ],
   "roomDetails": {
     "type": "Suite",
     "pricePerNight": 200,
-    "amenities": ["WiFi", "Breakfast", "Parking",]
+    "amenities": ["WiFi", "Breakfast", "Parking"] //deleted trailing comma, trailing commas are incorrect syntax in json
   }
 }
-`;
+
 
 
 // ============================================
@@ -92,10 +94,18 @@ const invalidBookingJSON = `
 
 1️⃣ What tools or techniques did you use to identify the errors?
 
+I used jsonlint.com to identify each error.
+
 2️⃣ How did you confirm that your corrected JSON file was valid?
+
+I ran the json validator on jsonlint to confirm the file is valid after corrections.
 
 3️⃣ Which errors were the most difficult to spot? Why?
 
+Missing commas are easy to miss since they blend in 
+
 4️⃣ What strategies can help you avoid these kinds of errors in the future?
    (e.g., syntax highlighting, linters, writing JSON by example)
+
+   Using linters could help avoid these errors in the future.
 */
